@@ -14,16 +14,22 @@ const props = defineProps({
   <div class="card">
     <div class="card-wrapper">
       <div class="card__img">
-        <img :src="props.image" alt="">
+        <svg class="border-path" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 50C1.5 50 10 46.5 10 40V26C10 16.084 16 10 26 10H40C46.5 10 50 1.5 50 0V50H0Z" fill="white"/>
+        </svg>
+
+        <img class="image" :src="props.image" alt="">
       </div>
       <h3 class="card__title">{{ props.title }}</h3>
-      <div class="card-button-wrapper">
-        <app-button class="card__btn">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M7 4V20L20 12L7 4Z" stroke="#fff" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </app-button>
+      <div class="card-button">
+        <div class="card-button-wrapper">
+          <app-button class="card__btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M7 4V20L20 12L7 4Z" stroke="#fff" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </app-button>
+        </div>
       </div>
       <p class="card__text">{{ props.text }}</p>
     </div>
@@ -40,14 +46,18 @@ const props = defineProps({
 
   @include breakpoint(md) {
     width: 350px;
+    min-width: 350px;
   }
-
+  
   @include breakpoint(sm) {
     width: 300px;
+    min-width: 300px;
   }
 
   &-wrapper {
     position: relative;
+    width: 100%;
+    height: 100%;
     transition: all 0.3s;
     cursor: pointer;
 
@@ -76,21 +86,21 @@ const props = defineProps({
 
   &__img {
     position: relative;
-    width: 400px;
-    height: 300px;
-    z-index: 9;
+    width: 100%;
+    height: 100%;
     border-radius: 16px;
     overflow: hidden;
 
-    @include breakpoint(md) {
-    width: 350px;
-  }
+    .border-path {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 80px;
+      height: 80px;
+      z-index: 1;
+    }
 
-  @include breakpoint(sm) {
-    width: 300px;
-  }
-
-    img {
+    .image {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -122,32 +132,11 @@ const props = defineProps({
 
   &-button-wrapper {
     position: absolute;
-    bottom: 0%;
-    right: 0%;
-    padding: 10px 0 0 10px;
-    z-index: 10;
+    bottom: 0;
+    right: 0;
     background: #FFF;
-    border-radius: 34px 0 0 34px;
-
-    &::before {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      background: #FFF;
-      width: 5px;
-      height: 5px;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      background: #ffffff;
-      width: 5px;
-      height: 3px;
-    }
+    border-radius: 34px 0 0 0px;
+    z-index: 2;
   }
 
   &__btn {

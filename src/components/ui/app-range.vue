@@ -33,6 +33,7 @@ const updateValue = (event) => {
 
 <style lang="scss">
 .range-wrapper {
+  position: relative;
   &:hover {
     .value-wrapper {
       transition: all 0.3s;
@@ -54,10 +55,14 @@ const updateValue = (event) => {
       align-items: center;
       justify-content: space-between;
       padding: 20px;
-      border-radius: 100px;
+      border-radius: 50px;
       border: 1px solid transparent;
       background: #F1F5F5;
       box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.02);
+
+      @include breakpoint(sm) {
+        width: 100%;
+      }
 
       .separator {
         position: absolute;
@@ -74,31 +79,34 @@ const updateValue = (event) => {
   .range__input {
     position: absolute;
     left: 7%;
+
+    @include breakpoint(sm) {
+      left: 0;
+    }
   }
 
-  /*********** Baseline, reset styles ***********/
   input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
     cursor: pointer;
     width: 315px;
+
+    @include breakpoint(sm) {
+      width: 100%;
+    }
   }
 
-  /* Removes default focus */
   input[type="range"]:focus {
     outline: none;
   }
 
-  /******** Chrome, Safari, Opera and Edge Chromium styles ********/
-  /* slider track */
   input[type="range"]::-webkit-slider-runnable-track {
     background-color: #083e4c;
     border-radius: 0rem;
     height: 2px;
   }
 
-  /* slider thumb */
   input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     /* Override default look */
@@ -116,8 +124,6 @@ const updateValue = (event) => {
     outline-offset: 0.125rem;
   }
 
-  /*********** Firefox styles ***********/
-  /* slider track */
   input[type="range"]::-moz-range-track {
     background-color: #083e4c;
     border-radius: 0rem;

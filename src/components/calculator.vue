@@ -27,6 +27,11 @@ import AppCheckbox from '@/components/ui/app-checkbox.vue'
         display: flex;
         align-items: center;
         gap: 20px;
+
+        @include breakpoint(xs) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
     }
 }
 </style>

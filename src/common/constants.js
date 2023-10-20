@@ -6,12 +6,12 @@ export const CARD_ARR = [
   },
   {
     title: "Ипотека от 4,3%",
-    image: "/images/card-img.jpg",
+    image: "/images/card-img-2.jpg",
     text: "Выгодные условия при оформлении у банков-партнеров",
   },
   {
     title: "Ипотека от 4,3%",
-    image: "/images/card-img.jpg",
+    image: "/images/card-img-3.jpg",
     text: "Выгодные условия при оформлении у банков-партнеров",
   },
 ];

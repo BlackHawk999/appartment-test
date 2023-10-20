@@ -5,7 +5,20 @@ import { RESULT_INFO } from '@/common/constants'
 
 <template>
     <div class="result">
-        <!-- <div class="result-corner"></div> -->
+        <div class="result__corner">
+            <div class="result__corner-wrapper">
+                <svg class="result__corner-icon" width="349" height="65" viewBox="0 0 349 65" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M348 0.1875C348 0.1875 135.121 0 0 0C15 0.5 19.5017 8.1875 29.5017 22.1875C39.5017 36.1875 54.0017 36.1875 54.0017 36.1875C54.0017 36.1875 303 35.875 319 36.1875C335 36.5 348.5 49.5 349 65L348 0.1875Z"
+                        fill="white" />
+                </svg>
+                <p class="result__corner-text">
+                    Узнайте о других <span>интересных предложениях</span>
+                </p>
+            </div>
+        </div>
+
         <div class="result-wrapper">
             <h2 class="result__title">Ипотека 0.1%</h2>
             <div class="result-infos">
@@ -15,34 +28,26 @@ import { RESULT_INFO } from '@/common/constants'
                 </div>
             </div>
         </div>
-        <!-- <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg"
-            version="1.1">
-            <defs>
-                <filter id="goo">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
-                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                        result="goo" />
-                    <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-                </filter>
-            </defs>
-        </svg> -->
     </div>
 </template>
 
 <style lang="scss">
 .result {
     position: relative;
-    padding: 20px;
-    clip-path: polygon(0% 0%, 63% 0%, 74% 14%, 100% 14%, 100% 100%, 0% 100%);
-    color: white;
-    z-index: 2;
-    background-color: #083E4C;
-    border-radius: 16px;
+    width: 100%;
+    overflow: hidden;
 
     &-wrapper {
+        border-radius: 16px;
+        background-color: #083E4C;
+        padding: 20px;
         display: flex;
         flex-direction: column;
         gap: 50px;
+
+        @include breakpoint(sm) {
+            gap: 30px;
+        }
     }
 
     &__title {
@@ -53,18 +58,56 @@ import { RESULT_INFO } from '@/common/constants'
         color: #083E4C;
         background: #fff;
         border-radius: 16px;
+
+        @include breakpoint(lg) {
+            margin-top: 30px;
+        }
+
+        @include breakpoint(md) {
+            font-size: 65px;
+        }
+
+        @include breakpoint(sm) {
+            font-size: 50px;
+        }
+
+        @include breakpoint(xs) {
+            margin-top: 15px;
+            font-size: 25px;
+        }
     }
 
     &-infos {
-        display: flex;
-        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
         gap: 65px;
+
+        @include breakpoint(md) {
+            gap: 50px;
+        }
+
+        @include breakpoint(sm) {
+            gap: 35px;
+        }
+
+        @include breakpoint(xs) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
     }
 
     &-child {
         display: flex;
         flex-direction: column;
         gap: 15px;
+
+        @include breakpoint(sm) {
+            gap: 10px;
+        }
+
+        @include breakpoint(xs) {
+            align-items: center;
+        }
     }
 
     .child {
@@ -78,46 +121,68 @@ import { RESULT_INFO } from '@/common/constants'
             color: #FFF;
             font-size: 30px;
             line-height: 120%;
+
+            @include breakpoint(md) {
+                font-size: 25px;
+            }
+
+            @include breakpoint(sm) {
+                font-size: 20px;
+            }
+
+            @include breakpoint(xs) {
+                font-size: 16px;
+            }
         }
     }
 
-    // &-corner {
-    //     float: right;
-    //     display: inline-blog;
-    //     width: 100px;
-    //     height: 40px;
-    //     margin-right: -5px;
-    //     background: white;
-    //     border-bottom-left-radius: 20px;
-    //     position: relative;
-    //     transform: skew(20deg);
-    // }
+    &__corner {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        height: 80px;
+        width: 425px;
 
-    // &-corner::before {
-    //     content: '';
-    //     background: blue;
-    //     width: 20px;
-    //     height: 20px;
-    //     position: absolute;
-    //     border-top: 10px solid white;
-    //     border-right: 10px solid white;
-    //     border-top-right-radius: 20px;
-    //     right: calc(100% - 10px);
-    //     top: -10px;
-    // }
+        &-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
 
-    // &-corner::after {
-    //     content: '';
-    //     background: blue;
-    //     width: 20px;
-    //     height: 20px;
-    //     position: absolute;
-    //     border-top: 10px solid white;
-    //     border-right: 10px solid white;
-    //     border-top-right-radius: 20px;
-    //     right: 4px;
-    //     top: calc(100% - 10px);
-    //     transform: skew(-20deg);
-    // }
+        &-text {
+            position: absolute;
+            top: 15px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #3D4543;
+
+            @include breakpoint(sm) {
+                top: 5px;
+                right: 10px;
+                color: #fff;
+            }
+
+            span:hover {
+                color: #083E4C;
+                cursor: pointer;
+
+                @include breakpoint(xs) {
+                    color: rgba(0, 91, 115, 1);
+                }
+            }
+        }
+
+        &-icon {
+            width: 100%;
+            height: 100%;
+
+            @include breakpoint(sm) {
+                display: none;
+            }
+        }
+    }
 }
 </style>

@@ -60,6 +60,15 @@ import Result from '@/components/result.vue';
     padding: 50px;
     background: #fff;
 
+    @include breakpoint(sm) {
+        padding: 25px;
+    }
+
+    @include breakpoint(xs) {
+        padding: 15px;
+    }
+
+
     &-header {
         display: flex;
         justify-content: space-between;
@@ -178,12 +187,21 @@ import Result from '@/components/result.vue';
         flex-wrap: wrap;
         gap: 35px;
         margin-top: 35px;
+
+        @include breakpoint(md) {
+            justify-content: center;
+        }
     }
 
     &-body {
         display: flex;
         gap: 40px;
         margin-top: 75px;
+
+        @include breakpoint(md) {
+            flex-direction: column;
+            align-items: center;
+        }
     }
 
     &-calculator {
@@ -192,6 +210,10 @@ import Result from '@/components/result.vue';
         padding: 25px 35px 35px 35px;
         border-radius: 40px;
         border: 1px solid #083E4C;
+
+        @include breakpoint(xs) {
+            width: 100%;
+        }
 
         &:hover {
             .calculator__title {
@@ -216,6 +238,9 @@ import Result from '@/components/result.vue';
     }
 
     &-result {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         flex: 1;
     }
 
